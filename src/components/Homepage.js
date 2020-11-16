@@ -130,7 +130,7 @@ class DesktopContainer extends Component {
                   Home
                 </Menu.Item>
                 <Menu.Item as='a' href="#aboutme">About me</Menu.Item>
-                <Menu.Item as={Link} to="/css-transition">Techlab</Menu.Item>
+                <Menu.Item as={Link} to="/css-transition">Front End</Menu.Item>
                 <Menu.Item as='a' href="martijn_wip_cv.pdf" target="_blank">Resumé</Menu.Item>
                 <Menu.Item position='right'>
                   <Button as='a' href="https://www.linkedin.com/in/martijn-wip-48330b8/" target="_blank" inverted={!fixed}>
@@ -184,7 +184,7 @@ class MobileContainer extends Component {
               Home
             </Menu.Item>
             <Menu.Item as='a' href="#aboutme">About me</Menu.Item>
-            <Menu.Item as={Link} to="/css-transition">Techlab</Menu.Item>
+            <Menu.Item as={Link} to="/css-transition">Front End</Menu.Item>
             <Menu.Item as='a' href="martijn_wip_cv.pdf" target="_blank">Resumé</Menu.Item>
             <Menu.Item as='a'>Log in</Menu.Item>
             <Menu.Item as='a'>Sign Up</Menu.Item>
@@ -242,11 +242,89 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
+
+const Django = () => (
+  <Grid.Row key={1} textAlign='left'>
+    <Grid.Column width={2}></Grid.Column>
+    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+      <Header as='h3' style={{ fontSize: '2em' }}>Django</Header>
+      <p style={{ fontSize: '1.33em' }}>
+      I have been developing Django REST APIs REST API using Python, Django (2.0), Django REST Framework (3.9), Docker, Travis CI, Postgres and Test Driven Development
+      for <a href="http://bezette-stad.atlasapp.nl/">bezette-stad.atlasapp.nl</a>
+      </p>
+      <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label><Label>Travis</Label><Label>TDD</Label>
+      </Grid.Column>
+      <Grid.Column width={2}></Grid.Column>  
+  </Grid.Row>
+)
+
+const Laravel = () => (
+  <Grid.Row key={2} textAlign='left'>
+    <Grid.Column width={2}></Grid.Column>
+    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+      <Header as='h3' style={{ fontSize: '2em' }}>Laravel</Header>
+      <p style={{ fontSize: '1.33em' }}>
+      Laravel is the first backend framework I worked with. I was surprised how fast I could pick this and start to develop 
+      a full backend system for <a href="http://mydailymoves.nl/">mydailymoves.nl</a>.
+      </p>
+      <Label>PHP</Label><Label>Eloquent</Label><Label>Apache</Label><Label>API</Label><Label>TDD</Label>
+      </Grid.Column>
+      <Grid.Column width={2}></Grid.Column>  
+  </Grid.Row>
+) 
+
+const NodeJS = () => (
+
+  <Grid.Row key={3} textAlign='left'>
+    <Grid.Column width={2}></Grid.Column>
+    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+      <Header as='h3' style={{ fontSize: '2em' }}>NodeJS</Header>
+      <p style={{ fontSize: '1.33em' }}>
+      For Jalt I developed a Reporting System for their Facebook business Manager.
+      </p>
+      <Label>Express</Label><Label>Sequelize</Label><Label>OAuth2</Label><Label>Facebook API</Label>
+      </Grid.Column>
+      <Grid.Column width={2}></Grid.Column>  
+  </Grid.Row>    
+
+)
+
+
+const selectBackendFrmwrk = (backend)=> {
+  switch(backend) {
+    case 1:
+      return <Django />
+      break;
+    case 2:
+      return <Laravel />
+      break;
+    case 3:
+      return <NodeJS />
+      break;
+    default:
+      return false
+  }
+}
+
+
+const showReadMore = (backend)=> {
+  
+  if(backend>0){
+    return (<Segment style={{ padding: '0em' }} vertical>
+        <Grid stackable>
+          
+        {selectBackendFrmwrk(backend)}      
+        </Grid>
+      </Segment>)
+  } 
+
+  return false
+  
+}
 const Homepage = () => {
 
-  const [backEndInfo, setbackEndInfo] = useState(1)
-  console.log(backEndInfo)
-
+  const [backEndInfo, setbackEndInfo] = useState(0)
+  
   return (<ResponsiveContainer>
     <Segment id="aboutme"  style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
@@ -277,14 +355,15 @@ const Homepage = () => {
       <Grid container stackable verticalAlign='middle'>
       <Grid.Row>
           <Grid.Column center>
-            <Header inverted textAlign='center' dividing as='h3' style={{ fontSize: '2.3em' }}>
+            <Header inverted textAlign='center' as='h3' style={{ fontSize: '2.3em' }}>
                   Front End Development
             </Header>
         </Grid.Column>
       </Grid.Row>      
       <Grid.Row>
-        <Grid.Column width={4}>
-          <Image rounded size='medium' src='react.png' circular />
+        <Grid.Column width={3}>
+          {/* <Image rounded size='medium' src='react.png' circular /> */}
+          <Icon name='react'  color='purple' size='massive' />
         </Grid.Column>
         <Grid.Column width={4}>
         <List bulleted>
@@ -299,7 +378,7 @@ const Homepage = () => {
             <List.Item style={{color:'#a333c8'}}>Redux Thunk / Async Redux</List.Item>
           </List>
         </Grid.Column>
-        <Grid.Column width={6}>
+        <Grid.Column width={7}>
           <p style={{ fontSize: '1.33em', paddingLeft:'1em' }}>
           I have worked with many front-end technologies. Started my carees as a Flash Developer. But with the introdcution of the frameworks by Google and Facebook 
           I first switched to Angular and Ionic to develop mobile apps. I realized however that the React and React Native technology are more popular I decided to switch to React.
@@ -318,7 +397,7 @@ const Homepage = () => {
             <Header as='h3' style={{ fontSize: '2em' }}>
             <Icon name='python' />Django
             </Header>
-            <p style={{ fontSize: '1.33em' }}>The last two years I have worked with Django as my backend technology.</p>
+            <p style={{ fontSize: '1.33em' }}>Django REST framework is a powerful and flexible toolkit for building Web APIs</p>
             <Button onClick={ ()=> setbackEndInfo(1) }  color='violet'>
               Read more
             </Button>            
@@ -349,91 +428,85 @@ const Homepage = () => {
       </Grid>
     </Segment>
 
-
-    <Segment style={{ padding: '0em' }} vertical>
-      <Grid stackable>
-
-      {/* <Transition.Group
-          as={List}
-          duration={200}
-          divided
-        >         */}
-      
-        <Grid.Row key={1} textAlign='left'>
-          <Grid.Column width={2}></Grid.Column>
-          <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>Django</Header>
-            <p style={{ fontSize: '1.33em' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac magna est. Phasellus et pulvinar purus. Pellentesque quis efficitur mi, a consectetur turpis. Nunc auctor luctus ex, vitae pretium nibh egestas sed. Cras cursus nisl ac aliquam commodo. Phasellus viverra velit quam, eget vulputate urna placerat id. 
-            </p>
-            <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label>
-            </Grid.Column>
-            <Grid.Column width={2}></Grid.Column>  
-        </Grid.Row>    
+    {showReadMore(backEndInfo)}
         
-        <Grid.Row key={2} textAlign='left'>
-          <Grid.Column width={2}></Grid.Column>
-          <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>Laravel</Header>
-            <p style={{ fontSize: '1.33em' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac magna est. Phasellus et pulvinar purus. Pellentesque quis efficitur mi, a consectetur turpis. Nunc auctor luctus ex, vitae pretium nibh egestas sed. Cras cursus nisl ac aliquam commodo. Phasellus viverra velit quam, eget vulputate urna placerat id. 
-            </p>
-            <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label>
-            </Grid.Column>
-            <Grid.Column width={2}></Grid.Column>  
+
+    <Segment inverted style={{ padding: '8em 0em'}} vertical textAlign="center">
+      <Grid columns='equal' container stackable verticalAlign='middle'>
+      <Grid.Row>
+          <Grid.Column >
+            <h2 class="ui icon dividing inverted header">
+              <i class="user circle inverted icon"></i>
+              <div class="content">
+                Work
+                <div class="sub header">Summary of my work as an employer or freelance</div>
+              </div>
+          </h2>
+        </Grid.Column>
+      </Grid.Row>      
+      <Grid.Row>
+        <Grid.Column >
+          <h4 class="ui dividing inverted header">Employers</h4>
+          <List >
+            <List.Item>Freelance</List.Item>
+            <List.Item>GGD Amsterdam</List.Item>
+            <List.Item>Fonk Amsterdam</List.Item>
+            <List.Item>Sanoma</List.Item>
+            <List.Item>USMedia</List.Item>
+            <List.Item>Media Republic</List.Item>
+            <List.Item>Ogilvy</List.Item>
+            <List.Item>FreelanceFirm</List.Item>
+            <List.Item>NFP</List.Item>
+          </List>
+        </Grid.Column>
+        <Grid.Column >
+          <h4 class="ui dividing inverted header">Projects </h4>
+          <List >
+            <List.Item>GGD Malaria App</List.Item>
+            <List.Item>MyDailyMoves</List.Item>
+            <List.Item>Tandenland App / GroeiGids</List.Item>
+            <List.Item>Jalt Campaign Reports</List.Item>
+            <List.Item>Sportrusten.nl</List.Item>
+            <List.Item>Fixico</List.Item>
+            <List.Item>Ikea</List.Item>
+            <List.Item>Ford Nederland</List.Item>
+            <List.Item>Tommy Hilfiger</List.Item>
+          </List>
+        </Grid.Column>
+        <Grid.Column >
+          <h4 class="ui dividing inverted header">More </h4>
+          <List >
+            <List.Item>Nuon</List.Item>
+            <List.Item>Red Bull</List.Item>
+            <List.Item>Tempo Team</List.Item>
+            <List.Item>Andrelon</List.Item>
+            <List.Item>KPN</List.Item>
+            <List.Item>HVA</List.Item>
+            <List.Item>and much more</List.Item>
+            <List.Item>&nbsp;</List.Item>
+            <List.Item></List.Item>
+            <List.Item></List.Item>
+            <List.Item></List.Item>
+          </List>            
+        </Grid.Column>
         </Grid.Row>
-
-        <Grid.Row key={3} textAlign='left'>
-          <Grid.Column width={2}></Grid.Column>
-          <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>NodeJS</Header>
-            <p style={{ fontSize: '1.33em' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac magna est. Phasellus et pulvinar purus. Pellentesque quis efficitur mi, a consectetur turpis. Nunc auctor luctus ex, vitae pretium nibh egestas sed. Cras cursus nisl ac aliquam commodo. Phasellus viverra velit quam, eget vulputate urna placerat id. 
-            </p>
-            <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label>
-            </Grid.Column>
-            <Grid.Column width={2}></Grid.Column>  
-        </Grid.Row>    
-        {/* </Transition.Group>   */}
-      
-    
       </Grid>
-    </Segment>    
-
+    </Segment>
+    
+    
     <Segment style={{ padding: '8em 0em' }} vertical>
-      <Container text>
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Breaking The Grid, Grabs Your Attention
-        </Header>
-        <p style={{ fontSize: '1.33em' }}>
-          Instead of focusing on content creation and hard About me, we have learned how to master the
-          art of doing nothing by providing massive amounts of whitespace and generic content that
-          can seem massive, monolithic and worth your attention.
+      <Container text textAlign='center'>
+      <h2 class="ui icon header">
+          <i class="js icon"></i>
+          <div class="content">
+            Javascript
+            <div class="sub header">NextGen Javascript</div>
+          </div>
+        </h2>
+        <p>
+        <Label>ES6</Label><Label>ES7</Label><Label>ES8</Label><Label>ES9</Label><Label>Higher Order Functions</Label>
+        <Label>Currying</Label><Label>Pure Functions</Label><Label>Asynchronous JavaScript</Label><Label>Callbacks, Promises, Async/Await</Label>
         </p>
-        <Button as='a' size='large'>
-          Read More
-        </Button>
-
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Case Studies</a>
-        </Divider>
-
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Did We Tell You About Our Bananas?
-        </Header>
-        <p style={{ fontSize: '1.33em' }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-          it's really true. It took years of gene splicing and combinatory DNA research, but our
-          bananas can really dance.
-        </p>
-        <Button as='a' size='large'>
-          I'm Still Quite Interested
-        </Button>
       </Container>
     </Segment>
 
