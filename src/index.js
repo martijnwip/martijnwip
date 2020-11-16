@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 
 import 'semantic-ui-css/semantic.min.css'
 
@@ -11,7 +11,7 @@ import MenuListTransitionGroup from './components/techlab/MenuListTransitionGrou
 
 ReactDom.render(
     
-    <BrowserRouter>
+    <HashRouter>
         <App>
             <Route path="/" exact component={Homepage} />
             <Route path="/css-transition" exact component={MenuAnimation} />
@@ -19,7 +19,7 @@ ReactDom.render(
         </App>    
             
         
-    </BrowserRouter>
+    </HashRouter>
     
     ,
     document.querySelector('#root')

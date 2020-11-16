@@ -8,9 +8,7 @@ import './Homepage.css'
 import {
   Button,
   Container,
-  Divider,
   Grid,
-  GridColumn,
   Header,
   Icon,
   Image,
@@ -20,7 +18,6 @@ import {
   Sidebar,
   Visibility,
   Label,
-  Transition
 } from 'semantic-ui-react'
 
 const { MediaContextProvider, Media } = createMedia({
