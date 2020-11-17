@@ -1,9 +1,10 @@
 
+import React, { Component, useState } from 'react'
 import { createMedia } from '@artsy/fresnel'
 import PropTypes from 'prop-types'
-import React, { Component, useState } from 'react'
+
 import { Link } from 'react-router-dom'
-import './Homepage.css'
+
 
 import {
   Button,
@@ -18,6 +19,7 @@ import {
   Sidebar,
   Visibility,
   Label,
+  Modal
 } from 'semantic-ui-react'
 
 const { MediaContextProvider, Media } = createMedia({
@@ -127,7 +129,7 @@ class DesktopContainer extends Component {
                   Home
                 </Menu.Item>
                 <Menu.Item as='a' href="#aboutme">About me</Menu.Item>
-                <Menu.Item as={Link} to="/css-transition">Front End</Menu.Item>
+                <Menu.Item as='a' href="#frontend">Front End</Menu.Item>
                 <Menu.Item as='a' href="martijn_wip_cv.pdf" target="_blank">Resumé</Menu.Item>
                 <Menu.Item position='right'>
                   <Button as='a' href="https://www.linkedin.com/in/martijn-wip-48330b8/" target="_blank" inverted={!fixed}>
@@ -180,11 +182,11 @@ class MobileContainer extends Component {
             <Menu.Item as='a' active>
               Home
             </Menu.Item>
-            <Menu.Item as='a' href="#aboutme">About me</Menu.Item>
-            <Menu.Item as={Link} to="/css-transition">Front End</Menu.Item>
+            <Menu.Item as='a' onClick={()=> this.setState({sidebarOpened:false})} href="#aboutme">About me</Menu.Item>
+            <Menu.Item as='a' onClick={()=> this.setState({sidebarOpened:false})} href="#frontend" >Front End</Menu.Item>
             <Menu.Item as='a' href="martijn_wip_cv.pdf" target="_blank">Resumé</Menu.Item>
-            <Menu.Item as='a'>Log in</Menu.Item>
-            <Menu.Item as='a'>Sign Up</Menu.Item>
+            {/* <Menu.Item as='a'>Log in</Menu.Item>
+            <Menu.Item as='a'>Sign Up</Menu.Item> */}
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -291,16 +293,61 @@ const selectBackendFrmwrk = (backend)=> {
   switch(backend) {
     case 1:
       return <Django />
-      break;
     case 2:
       return <Laravel />
-      break;
     case 3:
       return <NodeJS />
-      break;
     default:
       return false
   }
+}
+
+
+const FrameworkModal = ({ framework }) => {
+  const [open, setOpen] = React.useState(false)
+
+  const frameworks = {
+    "django":{
+      "color": "violet",
+      "description":"I <a href=''>have</a> been developing Django REST APIs REST API using Python, Django (2.0), Django REST Framework (3.9),\n Docker, Travis CI, Postgres and Test Driven Development",
+      "tags": ["nginx", "api", "pipelines"]
+    },
+    "laravel":{
+      "color": "purple",
+      "description":"Laravel is the first backend framework I worked with. I was surprised how fast I could pick this and start to develop  a full backend system for mydailymoves.nl",
+      "tags": ["PHP", "Eloquent", "MySQL", "Apache","API", "PHPUnit"]
+    },
+    "node":{
+      "color": "pink",
+      "description":"For Jalt I developed a Reporting System for their Facebook business Manager.",
+      "tags": ["Express", "Sequelize", "OAuth2", "Facebook API"]
+    }
+  }
+
+  return (
+    <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      size="large"
+      trigger={<Button color={frameworks[framework]['color']}>Read more</Button>}
+    >
+      <Modal.Header >Back-end Framework</Modal.Header>
+      <Modal.Content image>
+        <Modal.Description>
+          <Header style={{textTransform:'Capitalize'}}>{framework}</Header>
+          <p dangerouslySetInnerHTML={{__html: frameworks[framework]['description']}}>
+          </p>
+          <p>{frameworks[framework]['tags'].map( (tag)=> (<Label>{tag}</Label>) ) }</p>
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button color='green' onClick={() => setOpen(false)}>
+           Done
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  )
 }
 
 
@@ -321,6 +368,7 @@ const showReadMore = (backend)=> {
 const Homepage = () => {
 
   const [backEndInfo, setbackEndInfo] = useState(0)
+  
   
   return (<ResponsiveContainer>
     <Segment id="aboutme"  style={{ padding: '8em 0em' }} vertical>
@@ -348,10 +396,10 @@ const Homepage = () => {
     </Segment>
 
 
-    <Segment inverted style={{ padding: '8em 0em'}} vertical>
+    <Segment id="frontend" inverted style={{ padding: '8em 0em'}} vertical>
       <Grid container stackable verticalAlign='middle'>
       <Grid.Row>
-          <Grid.Column center>
+          <Grid.Column >
             <Header inverted textAlign='center' as='h3' style={{ fontSize: '2.3em' }}>
                   Front End Development
             </Header>
@@ -395,9 +443,7 @@ const Homepage = () => {
             <Icon name='python' />Django
             </Header>
             <p style={{ fontSize: '1.33em' }}>Django REST framework is a powerful and flexible toolkit for building Web APIs</p>
-            <Button onClick={ ()=> setbackEndInfo(1) }  color='violet'>
-              Read more
-            </Button>            
+            <FrameworkModal framework="django" />
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
@@ -406,44 +452,37 @@ const Homepage = () => {
             <p style={{ fontSize: '1.33em' }}>
               In my role as a Full Stack developer at the GGD/Amsterdam I worked with Laravel.
             </p>
-            <Button onClick={ ()=> setbackEndInfo(2) }  color='purple'>
-              Read more
-            </Button>            
+            <FrameworkModal framework="laravel" />            
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em' }}>
             <Icon name='node js' />NodeJS
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              For <a href="https://jalt.nl/" target="_blank">Jalt</a> I developed a Reporting System for their Facebook business Manager.
+              For <a href="https://jalt.nl/" target="_blank" rel="noreferrer">Jalt</a> I developed a Reporting System for their Facebook business Manager.
             </p>
-            <Button onClick={ ()=> setbackEndInfo(3) }  color='pink'>
-              Read more
-            </Button>            
+            <FrameworkModal framework="node" />                        
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
 
-    {showReadMore(backEndInfo)}
-        
-
     <Segment inverted style={{ padding: '8em 0em'}} vertical textAlign="center">
       <Grid columns='equal' container stackable verticalAlign='middle'>
       <Grid.Row>
           <Grid.Column >
-            <h2 class="ui icon dividing inverted header">
-              <i class="user circle inverted icon"></i>
-              <div class="content">
+            <Header as='h2' className="ui icon dividing inverted header">
+              {/* <Icon name="user" inverted circular={true} /> */}
+              <div className="content">
                 Work
-                <div class="sub header">Summary of my work as an employer or freelance</div>
+                <div className="sub header">Summary of my work as an employer or freelance</div>
               </div>
-          </h2>
+          </Header>
         </Grid.Column>
       </Grid.Row>      
       <Grid.Row>
         <Grid.Column >
-          <h4 class="ui dividing inverted header">Employers</h4>
+          <h4 className="ui dividing inverted header">Employers</h4>
           <List >
             <List.Item>Freelance</List.Item>
             <List.Item>GGD Amsterdam</List.Item>
@@ -457,7 +496,7 @@ const Homepage = () => {
           </List>
         </Grid.Column>
         <Grid.Column >
-          <h4 class="ui dividing inverted header">Projects </h4>
+          <h4 className="ui dividing inverted header">Projects </h4>
           <List >
             <List.Item>GGD Malaria App</List.Item>
             <List.Item>MyDailyMoves</List.Item>
@@ -471,7 +510,7 @@ const Homepage = () => {
           </List>
         </Grid.Column>
         <Grid.Column >
-          <h4 class="ui dividing inverted header">More </h4>
+          <h4 className="ui dividing inverted header">More </h4>
           <List >
             <List.Item>Nuon</List.Item>
             <List.Item>Red Bull</List.Item>
@@ -493,17 +532,17 @@ const Homepage = () => {
     
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text textAlign='center'>
-      <h2 class="ui icon header">
-          <i class="js icon"></i>
-          <div class="content">
+      <Header as='h2' icon >
+          <Icon name="js" circular={true} />
+          <div className="content">
             Javascript
-            <div class="sub header">NextGen Javascript</div>
+            <div className="sub header">I am fully comfortable with NextGen Javascript</div>
           </div>
-        </h2>
-        <p>
-        <Label>ES6</Label><Label>ES7</Label><Label>ES8</Label><Label>ES9</Label><Label>Higher Order Functions</Label>
+        </Header>
+        <div>
+        <Label>ES6</Label><Label>ES7</Label><Label>ES8</Label><Label>ES9</Label><Label>Higher Order Functions</Label><Label>Functional Programming</Label> 
         <Label>Currying</Label><Label>Pure Functions</Label><Label>Asynchronous JavaScript</Label><Label>Callbacks, Promises, Async/Await</Label>
-        </p>
+        </div>
       </Container>
     </Segment>
 
@@ -514,28 +553,26 @@ const Homepage = () => {
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
               <List link inverted>
-                <List.Item as='a'>Sitemap</List.Item>
-                <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a' href="https://flyingwip.github.io/"><i className="github inverted icon"></i>Github</List.Item>
+                <List.Item as='a'><Icon name="mail" inverted/>[martijnwip](@)[gmail][com]</List.Item>
+                <List.Item as='a'><Icon name="twitter" inverted />Twitter</List.Item>
+                <List.Item as='a'><Icon name="instagram" />Instagram</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='Services' />
               <List link inverted>
-                <List.Item as='a'>Banana Pre-Order</List.Item>
-                <List.Item as='a'>DNA FAQ</List.Item>
-                <List.Item as='a'>How To Access</List.Item>
-                <List.Item as='a'>Favorite X-Men</List.Item>
+                <List.Item as='a'>Frontend Development</List.Item>
+                <List.Item as='a'>Full Stack Development</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                Martijn Wip
               </Header>
-              <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
-              </p>
+              <div>
+                Full Stack Developer
+              </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>

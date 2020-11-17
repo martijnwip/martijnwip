@@ -1,6 +1,6 @@
 {
-  "homepage": "https://flyingwip.github.io/",
-  "name": "martijnwip.nl",
+  "homepage": "http://flyingwip.github.io/",
+  "name": "martijnwip",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
