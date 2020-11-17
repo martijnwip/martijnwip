@@ -553,7 +553,7 @@ const Homepage = () => {
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
               <List link inverted>
-                <List.Item as='a' href="https://flyingwip.github.io/"><i className="github inverted icon"></i>Github</List.Item>
+                <List.Item as='a' href="https://github.com/flyingwip/"><i className="github inverted icon"></i>Github</List.Item>
                 <List.Item as='a'><Icon name="mail" inverted/>[martijnwip](@)[gmail][com]</List.Item>
                 <List.Item as='a'><Icon name="twitter" inverted />Twitter</List.Item>
                 <List.Item as='a'><Icon name="instagram" />Instagram</List.Item>
