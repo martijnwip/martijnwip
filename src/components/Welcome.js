@@ -1,5 +1,7 @@
 import React from 'react'
 
-export default () => {
+const  welcome =  () => {
     return <h3>Welcome! Signup or Signin</h3>
 }
+
+export default welcome

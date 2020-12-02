@@ -1,9 +1,7 @@
 
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { createMedia } from '@artsy/fresnel'
 import PropTypes from 'prop-types'
-
-import { Link } from 'react-router-dom'
 
 
 import {
@@ -242,65 +240,65 @@ ResponsiveContainer.propTypes = {
 }
 
 
-const Django = () => (
-  <Grid.Row key={1} textAlign='left'>
-    <Grid.Column width={2}></Grid.Column>
-    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-      <Header as='h3' style={{ fontSize: '2em' }}>Django</Header>
-      <p style={{ fontSize: '1.33em' }}>
-      I have been developing Django REST APIs REST API using Python, Django (2.0), Django REST Framework (3.9), Docker, Travis CI, Postgres and Test Driven Development
-      for <a href="http://bezette-stad.atlasapp.nl/">bezette-stad.atlasapp.nl</a>
-      </p>
-      <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label><Label>Travis</Label><Label>TDD</Label>
-      </Grid.Column>
-      <Grid.Column width={2}></Grid.Column>  
-  </Grid.Row>
-)
+// const Django = () => (
+//   <Grid.Row key={1} textAlign='left'>
+//     <Grid.Column width={2}></Grid.Column>
+//     <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+//       <Header as='h3' style={{ fontSize: '2em' }}>Django</Header>
+//       <p style={{ fontSize: '1.33em' }}>
+//       Yo Currently working on a project that is set up AWS. The architecture is scalable, secure, resilient, and facilitates zero-downtime deployments. The workflows are based on GitLab Flow to automate processes and speed up deployments. Terraform is used to easily create and destroy environments to keep costs at a minimum. 
+//       This to avoid the AWS bill shock. Technology stack: Django REST, Docker, Postgres, Redis, Travis, CI/CD, TDD, GitLab, AWS, EC2, ALB, ECS, ECR, VPC, S3, and Infrastructure as Code (laC).
+//       </p>
+//       <Label>Migrations</Label><Label>Nginx</Label><Label>Aws</Label><Label>Docker</Label><Label>Travis</Label><Label>TDD</Label>
+//       </Grid.Column>
+//       <Grid.Column width={2}></Grid.Column>  
+//   </Grid.Row>
+// )
 
-const Laravel = () => (
-  <Grid.Row key={2} textAlign='left'>
-    <Grid.Column width={2}></Grid.Column>
-    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-      <Header as='h3' style={{ fontSize: '2em' }}>Laravel</Header>
-      <p style={{ fontSize: '1.33em' }}>
-      Laravel is the first backend framework I worked with. I was surprised how fast I could pick this and start to develop 
-      a full backend system for <a href="http://mydailymoves.nl/">mydailymoves.nl</a>.
-      </p>
-      <Label>PHP</Label><Label>Eloquent</Label><Label>Apache</Label><Label>API</Label><Label>TDD</Label>
-      </Grid.Column>
-      <Grid.Column width={2}></Grid.Column>  
-  </Grid.Row>
-) 
+// const Laravel = () => (
+//   <Grid.Row key={2} textAlign='left'>
+//     <Grid.Column width={2}></Grid.Column>
+//     <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+//       <Header as='h3' style={{ fontSize: '2em' }}>Laravel</Header>
+//       <p style={{ fontSize: '1.33em' }}>
+//       Laravel is the first backend framework I worked with. I was surprised how fast I could pick this and start to develop 
+//       a full backend system for <a href="http://mydailymoves.nl/">mydailymoves.nl</a>.
+//       </p>
+//       <Label>PHP</Label><Label>Eloquent</Label><Label>Apache</Label><Label>API</Label><Label>TDD</Label>
+//       </Grid.Column>
+//       <Grid.Column width={2}></Grid.Column>  
+//   </Grid.Row>
+// ) 
 
-const NodeJS = () => (
+// const NodeJS = () => (
 
-  <Grid.Row key={3} textAlign='left'>
-    <Grid.Column width={2}></Grid.Column>
-    <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-      <Header as='h3' style={{ fontSize: '2em' }}>NodeJS</Header>
-      <p style={{ fontSize: '1.33em' }}>
-      For Jalt I developed a Reporting System for their Facebook business Manager.
-      </p>
-      <Label>Express</Label><Label>Sequelize</Label><Label>OAuth2</Label><Label>Facebook API</Label>
-      </Grid.Column>
-      <Grid.Column width={2}></Grid.Column>  
-  </Grid.Row>    
+//   <Grid.Row key={3} textAlign='left'>
+//     <Grid.Column width={2}></Grid.Column>
+//     <Grid.Column width={10} style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+//       <Header as='h3' style={{ fontSize: '2em' }}>NodeJS</Header>
+//       <p style={{ fontSize: '1.33em' }}>
+//       For Jalt I developed a Reporting System for their Facebook business Manager.
+//       </p>
+//       <Label>Express</Label><Label>Sequelize</Label><Label>OAuth2</Label><Label>Facebook API</Label>
+//       </Grid.Column>
+//       <Grid.Column width={2}></Grid.Column>  
+//   </Grid.Row>    
 
-)
+// )
 
 
-const selectBackendFrmwrk = (backend)=> {
-  switch(backend) {
-    case 1:
-      return <Django />
-    case 2:
-      return <Laravel />
-    case 3:
-      return <NodeJS />
-    default:
-      return false
-  }
-}
+// const selectBackendFrmwrk = (backend)=> {
+//   switch(backend) {
+//     case 1:
+//       return <Django />
+//     case 2:
+//       return <Laravel />
+//     case 3:
+//       return <NodeJS />
+//     default:
+//       return false
+//   }
+// }
 
 
 const FrameworkModal = ({ framework }) => {
@@ -309,8 +307,8 @@ const FrameworkModal = ({ framework }) => {
   const frameworks = {
     "django":{
       "color": "violet",
-      "description":"I <a href=''>have</a> been developing Django REST APIs REST API using Python, Django (2.0), Django REST Framework (3.9),\n Docker, Travis CI, Postgres and Test Driven Development",
-      "tags": ["nginx", "api", "pipelines"]
+      "description":"I have experience with setting up a  project on AWS. The architecture is scalable, secure, resilient, and facilitates zero-downtime deployments.<br> The workflows are based on GitLab Flow to automate processes and speed up deployments.\n<br>Terraform is used to easily create and destroy environments to keep costs at a minimum.<br> This to avoid the AWS bill shock.",
+      "tags": ["nginx", "api", "pipelines", "Docker", "Postgres", "Redis", "Travis", "CI/CD", "TDD", "GitLab", "AWS", "EC2", "ALB", "ECS", "ECR", "VPC", "S3", "Infrastructure as Code"]
     },
     "laravel":{
       "color": "purple",
@@ -319,8 +317,8 @@ const FrameworkModal = ({ framework }) => {
     },
     "node":{
       "color": "pink",
-      "description":"For Jalt I developed a Reporting System for their Facebook business Manager.",
-      "tags": ["Express", "Sequelize", "OAuth2", "Facebook API"]
+      "description":"For Jalt I developed a Reporting System for their Facebook business Manager.<br>Besides this project , I developed a small training analytics application with is connected with Strava.",
+      "tags": ["Express", "Sequelize", "OAuth2", "Facebook API", "Strava"]
     }
   }
 
@@ -338,7 +336,7 @@ const FrameworkModal = ({ framework }) => {
           <Header style={{textTransform:'Capitalize'}}>{framework}</Header>
           <p dangerouslySetInnerHTML={{__html: frameworks[framework]['description']}}>
           </p>
-          <p>{frameworks[framework]['tags'].map( (tag)=> (<Label>{tag}</Label>) ) }</p>
+          {frameworks[framework]['tags'].map( (tag)=> (<Label key={tag}>{tag}</Label>) ) }
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -350,28 +348,10 @@ const FrameworkModal = ({ framework }) => {
   )
 }
 
-
-const showReadMore = (backend)=> {
-  
-  if(backend>0){
-    return (<Segment style={{ padding: '0em' }} vertical>
-        <Grid stackable>
-          
-        {selectBackendFrmwrk(backend)}      
-        </Grid>
-      </Segment>)
-  } 
-
-  return false
-  
-}
 const Homepage = () => {
 
-  const [backEndInfo, setbackEndInfo] = useState(0)
-  
-  
   return (<ResponsiveContainer>
-    <Segment id="aboutme"  style={{ padding: '8em 0em' }} vertical>
+    <Segment id="aboutme"  style={{ padding: '6em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column width={8}>
@@ -396,7 +376,7 @@ const Homepage = () => {
     </Segment>
 
 
-    <Segment id="frontend" inverted style={{ padding: '8em 0em'}} vertical>
+    <Segment id="frontend" inverted style={{ padding: '6em 0em'}} vertical>
       <Grid container stackable verticalAlign='middle'>
       <Grid.Row>
           <Grid.Column >
@@ -442,7 +422,7 @@ const Homepage = () => {
             <Header as='h3' style={{ fontSize: '2em' }}>
             <Icon name='python' />Django
             </Header>
-            <p style={{ fontSize: '1.33em' }}>Django REST framework is a powerful and flexible toolkit for building Web APIs</p>
+            <p style={{ fontSize: '1.33em' }}>I have developed several API's with the Django REST Framework. Together with  a devops infrastructure on Gitlab and AWS.</p>
             <FrameworkModal framework="django" />
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
@@ -467,11 +447,27 @@ const Homepage = () => {
       </Grid>
     </Segment>
 
-    <Segment inverted style={{ padding: '8em 0em'}} vertical textAlign="center">
+    <Segment inverted style={{ padding: '6em 0em' }} vertical>
+      <Container text textAlign='center'>
+        <Header inverted as='h2' icon textAlign='center'>
+          <Icon name='sass' />
+        </Header>
+        <div style={{ padding: '1em 0em' }}> I am fully comfortable with all modern day CSS techniques and work according the BEM methodology.</div>
+        <p>
+          <Label>Sass</Label><Label>Flexbox</Label><Label>CSS Grid</Label><Label>Animations</Label><Label>Selectors</Label><Label>Mixins</Label> 
+        </p>
+        <p>
+        <Label>Functions</Label><Label>Extends</Label><Label>The 7-1 rule</Label><Label>Component-based design</Label>
+        </p>
+      </Container>
+    </Segment>
+
+
+    <Segment  style={{ padding: '6em 0em'}} vertical textAlign="center">
       <Grid columns='equal' container stackable verticalAlign='middle'>
       <Grid.Row>
           <Grid.Column >
-            <Header as='h2' className="ui icon dividing inverted header">
+            <Header as='h2' className="ui icon dividing  header">
               {/* <Icon name="user" inverted circular={true} /> */}
               <div className="content">
                 Work
@@ -530,22 +526,7 @@ const Homepage = () => {
     </Segment>
     
     
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Container text textAlign='center'>
-      <Header as='h2' icon >
-          <Icon name="js" circular={true} />
-          <div className="content">
-            Javascript
-            <div className="sub header">I am fully comfortable with NextGen Javascript</div>
-          </div>
-        </Header>
-        <div>
-        <Label>ES6</Label><Label>ES7</Label><Label>ES8</Label><Label>ES9</Label><Label>Higher Order Functions</Label><Label>Functional Programming</Label> 
-        <Label>Currying</Label><Label>Pure Functions</Label><Label>Asynchronous JavaScript</Label><Label>Callbacks, Promises, Async/Await</Label>
-        </div>
-      </Container>
-    </Segment>
-
+    
     <Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
         <Grid divided inverted stackable>
