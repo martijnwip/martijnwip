@@ -135,7 +135,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as="a" href="#frontend">
                   Front End
                 </Menu.Item>
-                <Menu.Item as="a" href="cv_martijnwip_.pdf" target="_blank">
+                <Menu.Item as="a" href="cv_martijnwip.pdf" target="_blank">
                   Resumé
                 </Menu.Item>
                 <Menu.Item position="right">
