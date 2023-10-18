@@ -135,7 +135,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as="a" href="#frontend">
                   Front End
                 </Menu.Item>
-                <Menu.Item as="a" href="martijn_wip_cv.pdf" target="_blank">
+                <Menu.Item as="a" href="cv_martijnwip_.pdf" target="_blank">
                   Resumé
                 </Menu.Item>
                 <Menu.Item position="right">
@@ -149,7 +149,7 @@ class DesktopContainer extends Component {
                   </Button>
                   <Button
                     as="a"
-                    href="martijn_wip_cv.pdf"
+                    href="cv_martijnwip.pdf"
                     target="_blank"
                     inverted={!fixed}
                     primary={fixed}
@@ -213,7 +213,7 @@ class MobileContainer extends Component {
             >
               Front End
             </Menu.Item>
-            <Menu.Item as="a" href="martijn_wip_cv.pdf" target="_blank">
+            <Menu.Item as="a" href="cv_martijnwip.pdf" target="_blank">
               Resumé
             </Menu.Item>
             {/* <Menu.Item as='a'>Log in</Menu.Item>
